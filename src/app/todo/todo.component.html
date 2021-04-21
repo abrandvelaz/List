@@ -1,32 +1,94 @@
 <link rel=styleSheet href="todo.component.css" type="text/css">
 <div class="jumbotron" style="padding:45px 0px">
     <h4 class="text-center">To Do List App</h4>
-  </div>
-  
+</div> 
   <div class="input-group">
-    <input title="form" type="text" class="form-control" #itemTitle >
-    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
-      <i class="fa fa-plus-circle fa-2x"></i>
-    </div>
+    <input title="form" type="text" class="form-control" placeholder="Comprar pan" #itemTitle >
+    <button mat-flat-button class="pull-right" (click)="onAdd(itemTitle)">
+      <mat-icon>add</mat-icon>
+    </button>
+    
   </div>
-  
+  <br>
+  <div class="text-center">
+    <h3>Activity List</h3>
+  </div>
+  <br>
+  <div>
+      <mat-list class="list-group-item" *ngFor="let item of toDoListArray">
+        <div *ngIf = "item.isChecked == 0">
+          <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked,item)">
+            <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+          </span>
+          {{item.title}}
+          <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <mat-icon mat-list-icon>remove_circle_icon</mat-icon>        
+          </span>
+          <input title="form" type="text" class="pul" placeholder="¿Lo desea cambiar?" #itemTitle >
+          <span class="hover-cursor text-black-50" (click)="editItem(item.$key,item,itemTitle)">
+            <mat-icon mat-list-icon>edit</mat-icon> 
+          </span>
+        </div>
+        <div *ngIf = "item.isChecked == 1">
+          <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked,item)">
+            <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+          </span>
+          {{item.title}}
+          <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <mat-icon mat-list-icon>remove_circle_icon</mat-icon>        
+          </span>
+        </div>
+        <div *ngIf = "item.isChecked == 2">
+          <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked,item)">
+            <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+          </span>
+          {{item.title}}
+          <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <mat-icon mat-list-icon>remove_circle_icon</mat-icon>        
+          </span>
+        </div>
+      </mat-list>
+  </div>
+  <br>
+ 
+  <div class="btn-group-lg text-lg-center">
+    <span (click)="ordenarPorPrioridad()" > 
+      <i class="btn btn-outline-primary">Order by priority</i>
+    </span>
+    <span (click)="ordenaTareasFecha()" > 
+      <i class="btn btn-outline-warning">Order by date</i>
+    </span>
+    <span (click)="ordenaTareasNombre()" > 
+      <i class="btn btn-outline-dark">Order by Name</i>
+    </span>
+  </div>
+  <br>
+  <div class="btn-lg text-lg-center">
+    <button type="button" class="btn btn-outline-danger" (click)="onDeleteAll()">Delete All Activities</button>
+  </div>
+  <br>
+  <div class="text-center">
+    <h3>Activities Hystory</h3>
+  </div>
+  <br>
+
   <div style="margin:5px 0px">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let item of toDoListArray">
-        <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
-          <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-        </span>
-        {{item.title}}
-        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
-          <i class="fa fa-trash-o fa-lg"></i>
-        </span>
+      <li class="list-group-item" *ngFor="let item of toDoListArrayDone">
+          {{item.title}}
       </li>
     </ul>
   </div>
-
-  <div class="d-grid gap-2 d-md-block">
-    <button type="button" class="btn btn-danger" (click)="onDeleteAll()">Delete All Activities</button>
+  <br>
+  <div class="btn-group-lg text-lg-center">
+    <span (click)="ordenaTareasFechaDone()" > 
+      <i class="btn btn-outline-warning">Order by date</i>
+    </span>
+    <span (click)="ordenaTareasNombreDone()" > 
+      <i class="btn btn-outline-dark">Order by Name</i>
+    </span>
   </div>
-  <div>
-    <p> {{onNumberActivities()}} </p>
+  <br>
+  <div class="btn-lg text-lg-center">
+    <button type="button" class="btn btn-outline-danger" (click)="onDeleteAllDone()">Delete All History</button>
   </div>
