@@ -7,11 +7,20 @@
     <button mat-flat-button class="pull-right" (click)="onAdd(itemTitle)">
       <mat-icon>add</mat-icon>
     </button>
-    
   </div>
   <br>
   <div class="text-center">
     <h3>Activity List</h3>
+  </div>
+  <div class="btn-group-lg text-lg-center">
+    <mat-form-field class="black">
+      <mat-label>Order</mat-label>
+      <mat-select>
+        <mat-option (click)="ordenaTareasNombre()" value="Alfabético">Alfabético</mat-option>
+        <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenarPorPrioridad()" value="Estado">Estado</mat-option>
+        <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenaTareasFecha()" value="Fecha">Fecha</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <br>
   <div>
@@ -50,18 +59,7 @@
       </mat-list>
   </div>
   <br>
- 
-  <div class="btn-group-lg text-lg-center">
-    <span (click)="ordenarPorPrioridad()" > 
-      <i class="btn btn-outline-primary">Order by priority</i>
-    </span>
-    <span (click)="ordenaTareasFecha()" > 
-      <i class="btn btn-outline-warning">Order by date</i>
-    </span>
-    <span (click)="ordenaTareasNombre()" > 
-      <i class="btn btn-outline-dark">Order by Name</i>
-    </span>
-  </div>
+  
   <br>
   <div class="btn-lg text-lg-center">
     <button type="button" class="btn btn-outline-danger" (click)="onDeleteAll()">Delete All Activities</button>
@@ -71,22 +69,22 @@
     <h3>Activities Hystory</h3>
   </div>
   <br>
-
+  <div class="btn-group-lg text-lg-center">
+    <mat-form-field class="black">
+      <mat-label>Order</mat-label>
+      <mat-select>
+        <mat-option (click)="ordenaTareasNombreDone()" value="Alfabético">Alfabético</mat-option>
+        <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenaTareasFechaDone()" value="Fecha">Fecha</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <br>
   <div style="margin:5px 0px">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let item of toDoListArrayDone">
           {{item.title}}
       </li>
     </ul>
-  </div>
-  <br>
-  <div class="btn-group-lg text-lg-center">
-    <span (click)="ordenaTareasFechaDone()" > 
-      <i class="btn btn-outline-warning">Order by date</i>
-    </span>
-    <span (click)="ordenaTareasNombreDone()" > 
-      <i class="btn btn-outline-dark">Order by Name</i>
-    </span>
   </div>
   <br>
   <div class="btn-lg text-lg-center">

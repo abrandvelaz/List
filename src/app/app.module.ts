@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button'; 
 import {FormsModule} from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -34,6 +36,8 @@ import {FormsModule} from '@angular/forms';
     MatListModule,
     MatButtonModule,
     FormsModule,
+    MatSidenavModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
