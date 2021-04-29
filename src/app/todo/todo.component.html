@@ -14,9 +14,9 @@
   </div>
   <div class="btn-group-lg text-lg-center">
     <mat-form-field class="black">
-      <mat-label>Order</mat-label>
+      <mat-label>Ordenar</mat-label>
       <mat-select>
-        <mat-option (click)="ordenaTareasNombre()" value="Alfabético">Alfabético</mat-option>
+        <mat-option (click)="ordenaTareasNombre()" value="Alfabético">Alfabéticamente</mat-option>
         <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenarPorPrioridad()" value="Estado">Estado</mat-option>
         <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenaTareasFecha()" value="Fecha">Fecha</mat-option>
       </mat-select>
@@ -71,7 +71,7 @@
   <br>
   <div class="btn-group-lg text-lg-center">
     <mat-form-field class="black">
-      <mat-label>Order</mat-label>
+      <mat-label>Ordenar por:</mat-label>
       <mat-select>
         <mat-option (click)="ordenaTareasNombreDone()" value="Alfabético">Alfabético</mat-option>
         <mat-option [class.iconActive]="!ordenar && !arriba" (click)="ordenaTareasFechaDone()" value="Fecha">Fecha</mat-option>
